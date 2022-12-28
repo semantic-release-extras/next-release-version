@@ -1,0 +1,54 @@
+---
+name: Next semantic-release version
+description: GitHub Action to calculate the next semantic-release version number
+
+# TODO: create readme
+
+inputs:
+
+outputs:
+  new-release-published:
+    description: Indicates whether a new release will be published. The value is a string, either 'true' or 'false'.
+    value: ${{ steps.get-next-version.outputs.new-release-published }}
+  new-release-version:
+    description: If a new release will be published, the version of the new release. The value is a string, for example '1.3.0'.
+    value: ${{ steps.get-next-version.outputs.new-release-version }}
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        # Fetch all history and tags for calculating next semantic version
+        fetch-depth: 0
+
+    - name: Configure Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: lts/*
+        cache: npm
+
+    - name: Clean Node.js package manifests
+      run: rm -f package.json package-lock.json
+
+    - name: Import semantic-release package manifests
+      run: |
+        cp ${{ github.action_path }}/package.json package.json
+        cp ${{ github.action_path }}/package-lock.json package-lock.json
+      shell: bash
+
+    - name: Cache npm dependencies
+      uses: actions/cache@v3
+      id: cache-node-modules
+      with:
+        path: node_modules
+        key: semantic-release-extras-next-release-version-${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+
+    - name: Install semantic-release
+      if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      run: npm install semantic-release-export-data@1
+
+    - name: Calculate next semantic-release version
+      id: get-next-version
+      run: ./node_modules/.bin/semantic-release --dry-run --verify-conditions semantic-release-export-data --generate-notes semantic-release-export-data
