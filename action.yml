@@ -2,8 +2,6 @@
 name: Next semantic-release version
 description: GitHub Action to calculate the next semantic-release version number
 
-# TODO: create readme
-
 outputs:
   new-release-published:
     description: Indicates whether a new release will be published. The value is a string, either 'true' or 'false'.
@@ -27,12 +25,9 @@ runs:
         node-version: lts/*
         cache: npm
 
-    - name: Clean Node.js package manifests
-      run: rm -f package.json package-lock.json
-      shell: bash
-
-    - name: Import semantic-release package manifests
-      run: |
+    - run: |
+        : Import next-release-version Node.js package manifests
+        rm -f package.json package-lock.json
         cp ${{ github.action_path }}/package.json package.json
         cp ${{ github.action_path }}/package-lock.json package-lock.json
       shell: bash
@@ -44,12 +39,26 @@ runs:
         path: node_modules
         key: semantic-release-extras-next-release-version-${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
-    - name: Install semantic-release
-      if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      run: npm ci --ignore-scripts
+    - if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      run: |
+        : install semantic-release
+        npm ci --ignore-scripts
       shell: bash
 
-    - name: Calculate next semantic-release version
-      id: get-next-version
-      run: ./node_modules/.bin/semantic-release --dry-run --verify-conditions semantic-release-export-data --generate-notes semantic-release-export-data
+    # This is a questionable choice, and likely means this workflow doesn't yet support projects that configure semantic-release
+    # with one of the other supported configuration methods.
+    #
+    # This step is necessary in my projects that use a .releaserc.json file with a non-stock semantic-release plugin,
+    # because semantic-release throws an error when the plugin is referenced in the configuration but not present in the node_modules directory.
+    #
+    # Therefore, a quick and drity workaround is to clear out the configuration before invoking semantic-release.
+    - run: |
+        : remove existing semantic-release configuration
+        rm .releaserc.json
+      shell: bash
+
+    - id: get-next-version
+      run: |
+        : calculate next semantic-release version
+        ./node_modules/.bin/semantic-release --dry-run --verify-conditions semantic-release-export-data --generate-notes semantic-release-export-data
       shell: bash
