@@ -1,7 +1,7 @@
 # next-release-version
 
-**next-release-version** is a GitHub Action that calculates the next [semantic-
-release] version number (if any).
+**next-release-version** is a GitHub Action that calculates the next
+[semantic-release] version number (if any).
 
 [semantic-release]: https://github.com/semantic-release/semantic-release
 
