@@ -45,13 +45,17 @@ runs:
         npm ci --ignore-scripts --loglevel error
       shell: bash
 
-    # This is a questionable choice, and likely means this workflow doesn't yet support projects that configure semantic-release
-    # with one of the other supported configuration methods.
+    # This is a questionable choice, and likely means this workflow doesn't yet
+    # support projects that configure semantic-release with one of the other
+    # supported configuration methods.
     #
-    # This step is necessary in my projects that use a .releaserc.json file with a non-stock semantic-release plugin,
-    # because semantic-release throws an error when the plugin is referenced in the configuration but not present in the node_modules directory.
+    # This step is necessary in my projects that use a .releaserc.json file
+    # with a non-stock semantic-release plugin, because semantic-release throws
+    # an error when the plugin is referenced in the configuration but not
+    # present in the node_modules directory.
     #
-    # Therefore, a quick and drity workaround is to clear out the configuration before invoking semantic-release.
+    # Therefore, a quick and drity workaround is to clear out the configuration
+    # before invoking semantic-release.
     - run: |
         : remove existing semantic-release configuration
         rm .releaserc.json
