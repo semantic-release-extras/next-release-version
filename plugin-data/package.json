@@ -1,19 +1,5 @@
 {
-  "name": "@semantic-release-extras/next-release-version",
-  "version": "0.0.0-semantic-release-managed",
-  "description": "GitHub Action to calculate the next semantic-release version number",
-  "private": true,
-  "license": "ISC",
-  "author": "Eric Crosson <eric.s.crosson@utexas.edu>",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/semantic-release-extras/next-release-version.git"
-  },
-  "bugs": {
-    "url": "https://github.com/semantic-release-extras/next-release-version/issues"
-  },
-  "homepage": "https://github.com/semantic-release-extras/next-release-version#readme",
+  "name": "@semantic-release-extras/next-release-version-internal",
   "dependencies": {
     "semantic-release": "19.0.5",
     "semantic-release-export-data": "1.0.1"
