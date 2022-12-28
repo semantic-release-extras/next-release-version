@@ -4,8 +4,6 @@ description: GitHub Action to calculate the next semantic-release version number
 
 # TODO: create readme
 
-inputs:
-
 outputs:
   new-release-published:
     description: Indicates whether a new release will be published. The value is a string, either 'true' or 'false'.
@@ -31,6 +29,7 @@ runs:
 
     - name: Clean Node.js package manifests
       run: rm -f package.json package-lock.json
+      shell: bash
 
     - name: Import semantic-release package manifests
       run: |
@@ -47,8 +46,10 @@ runs:
 
     - name: Install semantic-release
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      run: npm install semantic-release-export-data@1
+      run: npm ci --ignore-scripts
+      shell: bash
 
     - name: Calculate next semantic-release version
       id: get-next-version
       run: ./node_modules/.bin/semantic-release --dry-run --verify-conditions semantic-release-export-data --generate-notes semantic-release-export-data
+      shell: bash
