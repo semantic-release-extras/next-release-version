@@ -26,7 +26,7 @@ runs:
         cache: npm
 
     - run: |
-        : Import next-release-version Node.js package manifests
+        : import next-release-version Node.js package manifests
         rm -f package.json package-lock.json
         cp ${{ github.action_path }}/package.json package.json
         cp ${{ github.action_path }}/package-lock.json package-lock.json
