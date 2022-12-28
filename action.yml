@@ -42,7 +42,7 @@ runs:
     - if: steps.cache-node-modules.outputs.cache-hit != 'true'
       run: |
         : install semantic-release
-        npm ci --ignore-scripts
+        npm ci --ignore-scripts --loglevel error
       shell: bash
 
     # This is a questionable choice, and likely means this workflow doesn't yet support projects that configure semantic-release
