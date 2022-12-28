@@ -1,6 +1,10 @@
 ---
 name: Next semantic-release version
 description: GitHub Action to calculate the next semantic-release version number
+author: EricCrosson
+branding:
+  icon: package
+  color: orange
 
 outputs:
   new-release-published:
