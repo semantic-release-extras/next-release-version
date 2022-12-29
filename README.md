@@ -7,7 +7,7 @@
 
 ## Use
 
-Create a [job] that invokes this action:
+In the first job, invoke this action:
 
 ```yaml
 jobs:
@@ -23,7 +23,7 @@ jobs:
         id: get-next-version
 ```
 
-Then reference the job outputs in subsequent jobs:
+In the next job, reference the action's outputs:
 
 ```yaml
 jobs:
@@ -41,7 +41,6 @@ jobs:
 [Here] is a complete workflow you can use as a reference.
 
 [here]: https://github.com/semantic-release-cargo/semantic-release-cargo/blob/master/.github/workflows/release.yml
-[job]: https://docs.github.com/en/actions/using-jobs/using-jobs-in-a-workflow
 
 ## Outputs
 
