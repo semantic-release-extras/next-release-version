@@ -31,8 +31,11 @@ jobs:
     name: Zhu Li, do the thing
     runs-on: ubuntu-latest
     if: needs.get-next-version.outputs.new-release-published == 'true'
+    needs:
+      - get-next-version
+
     steps:
-      - run: ./do-the-thing
+      - run: ./do-the-thing ${{ needs.get-next-version.outputs.new-release-version }}
 ```
 
 [Here] is a complete workflow you can use as a reference.
