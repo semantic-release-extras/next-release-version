@@ -23,7 +23,7 @@ jobs:
         id: get-next-version
 ```
 
-In the next job, reference the action's outputs:
+In the next job, reference this action's outputs:
 
 ```yaml
 jobs:
