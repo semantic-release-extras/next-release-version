@@ -32,13 +32,7 @@
         };
       in {
         devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            nodejs
-          ];
-          shellHook = ''
-            export PATH="$PWD/node_modules/.bin:$PATH"
-            ${checks.pre-commit-check.shellHook}
-          '';
+          inherit (checks.pre-commit-check) shellHook;
         };
       }
     );

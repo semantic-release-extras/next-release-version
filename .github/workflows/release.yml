@@ -17,5 +17,3 @@ jobs:
 
     steps:
       - uses: EricCrosson/semantic-release-your-github-action@v1
-        with:
-          semantic-release-configuration: .releaserc.json
