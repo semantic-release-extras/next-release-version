@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.1...v1.0.2) (2023-01-06)
+
+
+### Bug Fixes
+
+* **ci:** use semantic-release-your-github-action ([95f8292](https://github.com/semantic-release-extras/next-release-version/commit/95f82921806160d0b3be42b23c7554148de5e123))
+
 ## [1.0.1](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.0...v1.0.1) (2022-12-28)
 
 
