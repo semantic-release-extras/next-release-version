@@ -1,7 +1,0 @@
-{
-  "name": "@semantic-release-extras/next-release-version-internal",
-  "dependencies": {
-    "semantic-release": "19.0.5",
-    "semantic-release-export-data": "1.0.1"
-  }
-}
