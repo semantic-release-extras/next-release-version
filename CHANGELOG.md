@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.4...v1.0.5) (2023-01-07)
+
+
+### Bug Fixes
+
+* restore package.json ([9d19f5f](https://github.com/semantic-release-extras/next-release-version/commit/9d19f5f89ac210c99667882b76114f9006beb52a))
+
 ## [1.0.4](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.3...v1.0.4) (2023-01-07)
 
 
