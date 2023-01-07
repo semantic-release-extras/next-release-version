@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.2...v1.0.3) (2023-01-07)
+
+
+### Bug Fixes
+
+* import Node.js manifests before configuring Node.js ([c8a3e0e](https://github.com/semantic-release-extras/next-release-version/commit/c8a3e0e7112379804fad3786178dda1e0bd212cb))
+
 ## [1.0.2](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.1...v1.0.2) (2023-01-06)
 
 
