@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.3...v1.0.4) (2023-01-07)
+
+
+### Bug Fixes
+
+* do not fail if semantic-release config cannot be removed ([58c4817](https://github.com/semantic-release-extras/next-release-version/commit/58c481701cf1ce98fdd6fbf35c01b75bc257ee29))
+
 ## [1.0.3](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.2...v1.0.3) (2023-01-07)
 
 
