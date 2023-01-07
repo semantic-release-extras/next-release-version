@@ -60,9 +60,24 @@ runs:
     #
     # Therefore, a quick and drity workaround is to clear out the configuration
     # before invoking semantic-release.
+    #
+    # Notably missing: if the user is configuring semantic-release with the
+    # `release` key in the package.json, this will still error
     - run: |
         : remove existing semantic-release configuration
-        rm .releaserc.json
+        rm -f .releaserc{,.yaml,.yml,.json,.js,.cjs} .release.config.{js,cjs}
+      shell: bash
+
+    - name: Install is-semantic-release-configured
+      uses: taiki-e/install-action@v2
+      with:
+        tool: is-semantic-release-configured@1
+
+    - run: |
+        : Check for conflicting semantic-release configuration
+        if is-semantic-release-configured; then
+          echo "::warning title=Invalid precondition::Expected semantic-release to not be configured at this point"
+        fi
       shell: bash
 
     - id: get-next-version
