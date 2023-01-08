@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.6...v1.0.7) (2023-01-08)
+
+
+### Bug Fixes
+
+* **ci:** use faster install method ([8b5435d](https://github.com/semantic-release-extras/next-release-version/commit/8b5435d5bcfde14d66741d30de3602074c1645dd))
+
 ## [1.0.6](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.5...v1.0.6) (2023-01-07)
 
 
