@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.7...v1.0.8) (2023-01-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v20.0.2 ([3f74ff9](https://github.com/semantic-release-extras/next-release-version/commit/3f74ff9d088595c5600520e7765a9b3a9144b15c))
+
 ## [1.0.7](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.6...v1.0.7) (2023-01-08)
 
 
