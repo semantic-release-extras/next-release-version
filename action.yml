@@ -69,9 +69,9 @@ runs:
       shell: bash
 
     - name: Install is-semantic-release-configured
-      uses: taiki-e/install-action@v2
+      uses: EricCrosson/install-github-release-binary@v1
       with:
-        tool: is-semantic-release-configured@1
+        repo: EricCrosson/is-semantic-release-configured@v1
 
     - run: |
         : Check for conflicting semantic-release configuration
