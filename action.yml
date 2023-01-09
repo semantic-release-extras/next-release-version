@@ -49,9 +49,7 @@ runs:
         npm ci --ignore-scripts --loglevel error
       shell: bash
 
-    # This is a questionable choice, and likely means this workflow doesn't yet
-    # support projects that configure semantic-release with one of the other
-    # supported configuration methods.
+    # Clear out any existing semantic-release configuration.
     #
     # This step is necessary in my projects that use a .releaserc.json file
     # with a non-stock semantic-release plugin, because semantic-release throws
@@ -60,9 +58,6 @@ runs:
     #
     # Therefore, a quick and drity workaround is to clear out the configuration
     # before invoking semantic-release.
-    #
-    # Notably missing: if the user is configuring semantic-release with the
-    # `release` key in the package.json, this will still error
     - run: |
         : remove existing semantic-release configuration
         rm -f .releaserc{,.yaml,.yml,.json,.js,.cjs} .release.config.{js,cjs}
