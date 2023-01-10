@@ -58,6 +58,10 @@ runs:
     #
     # Therefore, a quick and drity workaround is to clear out the configuration
     # before invoking semantic-release.
+    #
+    # There's no need to remove the release key from the host package.json file
+    # because we've overwritten it with this action's package.json, which we
+    # know doesn't contain a semantic-release configuration.
     - run: |
         : remove existing semantic-release configuration
         rm -f .releaserc{,.yaml,.yml,.json,.js,.cjs} .release.config.{js,cjs}
