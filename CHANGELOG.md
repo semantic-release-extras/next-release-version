@@ -1,3 +1,10 @@
+## [1.0.10](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.9...v1.0.10) (2023-01-11)
+
+
+### Bug Fixes
+
+* create directory before writing file into it ([fa36fa9](https://github.com/semantic-release-extras/next-release-version/commit/fa36fa9506bbe9433920d4f9115c67e07769b279))
+
 ## [1.0.9](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.8...v1.0.9) (2023-01-11)
 
 
