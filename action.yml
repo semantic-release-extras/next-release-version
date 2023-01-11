@@ -27,8 +27,13 @@ runs:
         : configure working directory
         echo "node_workdir=$GITHUB_WORKSPACE/.next-release-version/" >> "$GITHUB_ENV"
         echo "semantic_release=$GITHUB_WORKSPACE/.next-release-version/node_modules/.bin/semantic-release" >> "$GITHUB_ENV"
-        echo "/.next-release-action/" >> "$HOME/.config/git/ignore"
         mkdir -p "$GITHUB_WORKSPACE/.next-release-version/"
+      shell: bash
+
+    - run: |
+        : configure git to ignore semantic-release manifest
+        mkdir -p "$HOME/.config/git"
+        echo "/.next-release-action/" >> "$HOME/.config/git/ignore"
       shell: bash
 
     - run: |
