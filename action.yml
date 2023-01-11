@@ -24,29 +24,41 @@ runs:
         fetch-depth: 0
 
     - run: |
-        : import next-release-version Node.js package manifests
-        rm -f package.json package-lock.json
-        cp ${{ github.action_path }}/package.json package.json
-        cp ${{ github.action_path }}/package-lock.json package-lock.json
+        : configure working directory
+        echo "node_workdir=$GITHUB_WORKSPACE/.next-release-version/" >> "$GITHUB_ENV"
+        echo "semantic_release=$GITHUB_WORKSPACE/.next-release-version/node_modules/.bin/semantic-release" >> "$GITHUB_ENV"
+        echo "/.next-release-action/" >> "$HOME/.config/git/ignore"
+        mkdir -p "$GITHUB_WORKSPACE/.next-release-version/"
+      shell: bash
+
+    - run: |
+        : configure Node.js path
+        echo NODE_PATH="$node_workdir${NODE_PATH:+":$NODE_PATH"}" >> "$GITHUB_ENV"
+      shell: bash
+
+    - run: |
+        : install semantic-release manifest
+        cp "${{ github.action_path }}/package.json" "${{ env.node_workdir }}/package.json"
+        cp "${{ github.action_path }}/package-lock.json" "${{ env.node_workdir }}/package-lock.json"
       shell: bash
 
     - name: Configure Node.js
       uses: actions/setup-node@v3
       with:
         node-version: lts/*
-        cache: npm
 
-    - name: Cache npm dependencies
+    - name: Cache action npm dependencies
       uses: actions/cache@v3
       id: cache-node-modules
       with:
-        path: node_modules
-        key: semantic-release-extras-next-release-version-${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+        path: .next-release-version/node_modules
+        key: semantic-release-extras-next-release-version-${{ runner.os }}-node-${{ hashFiles('.next-release-version/package-lock.json') }}
 
     - if: steps.cache-node-modules.outputs.cache-hit != 'true'
       run: |
         : install semantic-release
         npm ci --ignore-scripts --loglevel error
+      working-directory: ${{ env.node_workdir }}
       shell: bash
 
     # Clear out any existing semantic-release configuration.
@@ -75,12 +87,12 @@ runs:
     - run: |
         : Check for conflicting semantic-release configuration
         if is-semantic-release-configured; then
-          echo "::warning title=Invalid precondition::Expected semantic-release to not be configured at this point"
+          echo "::warning title=Invalid precondition::Expected semantic-release to not be configured at this point in this action's execution"
         fi
       shell: bash
 
     - id: get-next-version
       run: |
         : calculate next semantic-release version
-        ./node_modules/.bin/semantic-release --dry-run --verify-conditions semantic-release-export-data --generate-notes semantic-release-export-data
+        ${semantic_release} --dry-run --verify-conditions semantic-release-export-data --generate-notes semantic-release-export-data
       shell: bash
