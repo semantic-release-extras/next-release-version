@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.8...v1.0.9) (2023-01-11)
+
+
+### Bug Fixes
+
+* use temporary working directory ([24fda35](https://github.com/semantic-release-extras/next-release-version/commit/24fda35cfb6029954519051467e50363750a9557))
+
 ## [1.0.8](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.7...v1.0.8) (2023-01-08)
 
 
