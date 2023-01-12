@@ -1,3 +1,10 @@
+## [1.0.11](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.10...v1.0.11) (2023-01-12)
+
+
+### Bug Fixes
+
+* **deps:** upgrade install-github-release-binary to v2 ([3aa61c0](https://github.com/semantic-release-extras/next-release-version/commit/3aa61c08488392e7d9421188056ca564eb896bc3))
+
 ## [1.0.10](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.9...v1.0.10) (2023-01-11)
 
 
