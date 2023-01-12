@@ -85,9 +85,9 @@ runs:
       shell: bash
 
     - name: Install is-semantic-release-configured
-      uses: EricCrosson/install-github-release-binary@v1
+      uses: EricCrosson/install-github-release-binary@v2
       with:
-        repo: EricCrosson/is-semantic-release-configured@v1
+        targets: EricCrosson/is-semantic-release-configured@v1
 
     - run: |
         : Check for conflicting semantic-release configuration
