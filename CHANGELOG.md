@@ -1,3 +1,11 @@
+## [1.0.14](https://github.com/semantic-release-action/next-release-version/compare/v1.0.13...v1.0.14) (2023-01-14)
+
+
+### Bug Fixes
+
+* **ci:** invoke reusable workflow correctly ([49f3078](https://github.com/semantic-release-action/next-release-version/commit/49f30780691ed7be2d6ad75492643be8fd8aebe4))
+* **ci:** update semantic-release-action/github-actions to v4 ([67a426f](https://github.com/semantic-release-action/next-release-version/commit/67a426f1165557a7e54d28675326ac3531e60e83))
+
 ## [1.0.13](https://github.com/semantic-release-action/next-release-version/compare/v1.0.12...v1.0.13) (2023-01-14)
 
 
