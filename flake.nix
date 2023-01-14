@@ -1,6 +1,4 @@
 {
-  description = "@semantic-release-extras/next-release-version";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";

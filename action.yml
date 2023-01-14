@@ -25,9 +25,9 @@ runs:
 
     - run: |
         : configure working directory
-        echo "node_workdir=$GITHUB_WORKSPACE/.next-release-version/" >> "$GITHUB_ENV"
-        echo "semantic_release=$GITHUB_WORKSPACE/.next-release-version/node_modules/.bin/semantic-release" >> "$GITHUB_ENV"
-        mkdir -p "$GITHUB_WORKSPACE/.next-release-version/"
+        echo "node_workdir=$GITHUB_WORKSPACE/.semantic-release-action_next-release-version/" >> "$GITHUB_ENV"
+        echo "semantic_release=$GITHUB_WORKSPACE/.semantic-release-action_next-release-version/node_modules/.bin/semantic-release" >> "$GITHUB_ENV"
+        mkdir -p "$GITHUB_WORKSPACE/.semantic-release-action_next-release-version/"
       shell: bash
 
     - run: |
@@ -56,8 +56,8 @@ runs:
       uses: actions/cache@v3
       id: cache-node-modules
       with:
-        path: .next-release-version/node_modules
-        key: semantic-release-extras-next-release-version-${{ runner.os }}-node-${{ hashFiles('.next-release-version/package-lock.json') }}
+        path: .semantic-release-action_next-release-version/node_modules
+        key: semantic-release-action/next-release-version-${{ runner.os }}-node-${{ hashFiles('.semantic-release-action_next-release-version/package-lock.json') }}
 
     - if: steps.cache-node-modules.outputs.cache-hit != 'true'
       run: |

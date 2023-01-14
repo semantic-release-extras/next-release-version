@@ -1,8 +1,8 @@
 # next-release-version
 
-[![Build Status]](https://github.com/semantic-release-extras/next-release-version/actions/workflows/release.yml)
+[![Build Status]](https://github.com/semantic-release-action/next-release-version/actions/workflows/release.yml)
 
-[build status]: https://github.com/semantic-release-extras/next-release-version/actions/workflows/release.yml/badge.svg?event=push
+[build status]: https://github.com/semantic-release-action/next-release-version/actions/workflows/release.yml/badge.svg?event=push
 
 **next-release-version** is a GitHub Action that calculates the next
 [semantic-release] version number (if any).
