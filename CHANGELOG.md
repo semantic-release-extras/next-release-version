@@ -1,3 +1,10 @@
+## [1.0.13](https://github.com/semantic-release-action/next-release-version/compare/v1.0.12...v1.0.13) (2023-01-14)
+
+
+### Bug Fixes
+
+* **deps:** migrate to semantic-release-action/next-release-version ([8e11762](https://github.com/semantic-release-action/next-release-version/commit/8e117626f3d235cc49f1472a65063ff6684ed51d))
+
 ## [1.0.12](https://github.com/semantic-release-extras/next-release-version/compare/v1.0.11...v1.0.12) (2023-01-14)
 
 
