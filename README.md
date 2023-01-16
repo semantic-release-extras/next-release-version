@@ -11,23 +11,16 @@
 
 ## Use
 
-In the first job, invoke this action:
+In the first job, invoke this workflow:
 
 ```yaml
+---
 jobs:
   get-next-version:
-    name: Calculate next release
-    runs-on: ubuntu-latest
-    outputs:
-      new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
-      new-release-version: ${{ steps.get-next-version.outputs.new-release-version }}
-
-    steps:
-      - uses: semantic-release-action/next-release-version@v1
-        id: get-next-version
+    uses: semantic-release-action/next-release-version/.github/workflows/ci.yml@v2
 ```
 
-In the next job, reference this action's outputs:
+In the next job, reference the workflow's outputs:
 
 ```yaml
 jobs:
@@ -48,7 +41,7 @@ jobs:
 
 ## Outputs
 
-This Action exports the following outputs:
+This workflow exports the following outputs:
 
 | Output                  | Description                                                                                                       |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------- |

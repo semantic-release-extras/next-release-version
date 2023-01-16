@@ -1,103 +1,102 @@
 ---
 name: Next semantic-release version
-description: GitHub Action to calculate the next semantic-release version number
-author: EricCrosson
-branding:
-  icon: package
-  color: orange
 
-outputs:
-  new-release-published:
-    description: Indicates whether a new release will be published. The value is a string, either 'true' or 'false'.
-    value: ${{ steps.get-next-version.outputs.new-release-published }}
-  new-release-version:
-    description: If a new release will be published, the version of the new release. The value is a string, for example '1.3.0'.
-    value: ${{ steps.get-next-version.outputs.new-release-version }}
+on:
+  workflow_call:
+    outputs:
+      new-release-published:
+        description: Indicates whether a new release will be published. The value is a string, either 'true' or 'false'.
+        value: ${{ jobs.get-next-version.outputs.new-release-published }}
+      new-release-version:
+        description: If a new release will be published, the version of the new release. The value is a string, for example '1.3.0'.
+        value: ${{ jobs.get-next-version.outputs.new-release-version }}
 
-runs:
-  using: composite
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        # Fetch all history and tags for calculating next semantic version
-        fetch-depth: 0
+jobs:
+  get-next-version:
+    name: Get next release version
+    runs-on: ubuntu-latest
+    outputs:
+      new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
+      new-release-version: ${{ steps.get-next-version.outputs.new-release-version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          # Fetch all history and tags for calculating next semantic version
+          fetch-depth: 0
 
-    - run: |
-        : configure working directory
-        echo "node_workdir=$GITHUB_WORKSPACE/.semantic-release-action_next-release-version/" >> "$GITHUB_ENV"
-        echo "semantic_release=$GITHUB_WORKSPACE/.semantic-release-action_next-release-version/node_modules/.bin/semantic-release" >> "$GITHUB_ENV"
-        mkdir -p "$GITHUB_WORKSPACE/.semantic-release-action_next-release-version/"
-      shell: bash
+      - run: |
+          : configure working directory
+          echo "node_workdir=$GITHUB_WORKSPACE/.semantic-release-action_next-release-version/" >> "$GITHUB_ENV"
+          echo "semantic_release=$GITHUB_WORKSPACE/.semantic-release-action_next-release-version/node_modules/.bin/semantic-release" >> "$GITHUB_ENV"
+          mkdir -p "$GITHUB_WORKSPACE/.semantic-release-action_next-release-version/"
+        shell: bash
 
-    - run: |
-        : configure git to ignore semantic-release manifest
-        mkdir -p "$HOME/.config/git"
-        echo "/.next-release-action/" >> "$HOME/.config/git/ignore"
-      shell: bash
+      - run: |
+          : configure git to ignore semantic-release manifest
+          mkdir -p "$HOME/.config/git"
+          echo "/.next-release-action/" >> "$HOME/.config/git/ignore"
+        shell: bash
 
-    - run: |
-        : configure Node.js path
-        echo NODE_PATH="$node_workdir${NODE_PATH:+":$NODE_PATH"}" >> "$GITHUB_ENV"
-      shell: bash
+      - run: |
+          : configure Node.js path
+          echo NODE_PATH="$node_workdir${NODE_PATH:+":$NODE_PATH"}" >> "$GITHUB_ENV"
+        shell: bash
 
-    - run: |
-        : install semantic-release manifest
-        cp "${{ github.action_path }}/package.json" "${{ env.node_workdir }}/package.json"
-        cp "${{ github.action_path }}/package-lock.json" "${{ env.node_workdir }}/package-lock.json"
-      shell: bash
+      - run: |
+          : install semantic-release manifest
+          cp "${{ github.action_path }}/package.json" "${{ env.node_workdir }}/package.json"
+          cp "${{ github.action_path }}/package-lock.json" "${{ env.node_workdir }}/package-lock.json"
+        shell: bash
 
-    - name: Configure Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: lts/*
+      - name: Configure Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
 
-    - name: Cache action npm dependencies
-      uses: actions/cache@v3
-      id: cache-node-modules
-      with:
-        path: .semantic-release-action_next-release-version/node_modules
-        key: semantic-release-action/next-release-version-${{ runner.os }}-node-${{ hashFiles('.semantic-release-action_next-release-version/package-lock.json') }}
+      - name: Cache action npm dependencies
+        uses: actions/cache@v3
+        id: cache-node-modules
+        with:
+          path: .semantic-release-action_next-release-version/node_modules
+          key: semantic-release-action/next-release-version-${{ runner.os }}-node-${{ hashFiles('.semantic-release-action_next-release-version/package-lock.json') }}
 
-    - if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      run: |
-        : install semantic-release
-        npm ci --ignore-scripts --loglevel error
-      working-directory: ${{ env.node_workdir }}
-      shell: bash
+      - if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: |
+          : install semantic-release
+          npm ci --ignore-scripts --loglevel error
+        working-directory: ${{ env.node_workdir }}
+        shell: bash
 
-    # Clear out any existing semantic-release configuration.
-    #
-    # This step is necessary in my projects that use a .releaserc.json file
-    # with a non-stock semantic-release plugin, because semantic-release throws
-    # an error when the plugin is referenced in the configuration but not
-    # present in the node_modules directory.
-    #
-    # Therefore, a quick and drity workaround is to clear out the configuration
-    # before invoking semantic-release.
-    #
-    # There's no need to remove the release key from the host package.json file
-    # because we've overwritten it with this action's package.json, which we
-    # know doesn't contain a semantic-release configuration.
-    - run: |
-        : remove existing semantic-release configuration
-        rm -f .releaserc{,.yaml,.yml,.json,.js,.cjs} .release.config.{js,cjs}
-      shell: bash
+      # Clear out any existing semantic-release configuration.
+      #
+      # This step is necessary in my projects that use a .releaserc.json file
+      # with a non-stock semantic-release plugin, because semantic-release throws
+      # an error when the plugin is referenced in the configuration but not
+      # present in the node_modules directory.
+      #
+      # Therefore, a quick and drity workaround is to clear out the configuration
+      # before invoking semantic-release.
+      - run: |
+          : remove existing semantic-release configuration
+          rm -f .releaserc{,.yaml,.yml,.json,.js,.cjs} .release.config.{js,cjs}
+          node -e "const fs = require('fs'); const manifest = JSON.parse(fs.readFileSync('package.json', { encoding: 'utf8' })); delete manifest.release; fs.writeFileSync('package.json', JSON.stringify(manifest, null, 2) + '\n');"
+        shell: bash
 
-    - name: Install is-semantic-release-configured
-      uses: EricCrosson/install-github-release-binary@v2
-      with:
-        targets: EricCrosson/is-semantic-release-configured@v1
+      - name: Install is-semantic-release-configured
+        uses: EricCrosson/install-github-release-binary@v2
+        with:
+          targets: EricCrosson/is-semantic-release-configured@v1
 
-    - run: |
-        : Check for conflicting semantic-release configuration
-        if is-semantic-release-configured; then
-          echo "::warning title=Invalid precondition::Expected semantic-release to not be configured at this point in this action's execution"
-        fi
-      shell: bash
+      - run: |
+          : Check for conflicting semantic-release configuration
+          if is-semantic-release-configured; then
+            echo "::warning title=Invalid precondition::Expected semantic-release to not be configured at this point in this action's execution"
+          fi
+        shell: bash
 
-    - id: get-next-version
-      run: |
-        : calculate next semantic-release version
-        ${semantic_release} --dry-run --verify-conditions semantic-release-export-data --generate-notes semantic-release-export-data
-      shell: bash
+      - id: get-next-version
+        run: |
+          : calculate next semantic-release version
+          ${semantic_release} --dry-run --verify-conditions semantic-release-export-data --generate-notes semantic-release-export-data
+        shell: bash
