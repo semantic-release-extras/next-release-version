@@ -1,3 +1,19 @@
+# [2.0.0](https://github.com/semantic-release-action/next-release-version/compare/v1.0.14...v2.0.0) (2023-01-16)
+
+
+* refactor!: convert action to a workflow ([7665eca](https://github.com/semantic-release-action/next-release-version/commit/7665ecaf872b4a634f2e2b8f1915fdfd9221387e))
+
+
+### BREAKING CHANGES
+
+* convert this action to a workflow
+
+You can now invoke this workflow as follows:
+
+In the first workflow:
+
+```yaml
+
 ## [1.0.14](https://github.com/semantic-release-action/next-release-version/compare/v1.0.13...v1.0.14) (2023-01-14)
 
 
