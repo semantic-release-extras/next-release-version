@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/semantic-release-action/next-release-version/compare/v2.0.1...v2.0.2) (2023-01-16)
+
+
+### Bug Fixes
+
+* use shared action to support copying action manifests ([7a0487a](https://github.com/semantic-release-action/next-release-version/commit/7a0487a84eefe94909d4578d64d3f3bd253d2fc2))
+
 ## [2.0.1](https://github.com/semantic-release-action/next-release-version/compare/v2.0.0...v2.0.1) (2023-01-16)
 
 
