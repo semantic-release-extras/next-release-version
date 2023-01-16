@@ -15,6 +15,10 @@ jobs:
   get-next-version:
     name: Get next release version
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     outputs:
       new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
       new-release-version: ${{ steps.get-next-version.outputs.new-release-version }}
