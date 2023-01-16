@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/semantic-release-action/next-release-version/compare/v2.0.2...v2.0.3) (2023-01-16)
+
+
+### Bug Fixes
+
+* only modify package.json when it exists ([0f09401](https://github.com/semantic-release-action/next-release-version/commit/0f094010e3735b1cb2c53d20ffe2290b62bef5eb))
+
 ## [2.0.2](https://github.com/semantic-release-action/next-release-version/compare/v2.0.1...v2.0.2) (2023-01-16)
 
 
