@@ -77,7 +77,9 @@ runs:
     - run: |
         : remove existing semantic-release configuration
         rm -f .releaserc{,.yaml,.yml,.json,.js,.cjs} .release.config.{js,cjs}
-        node -e "const fs = require('fs'); const manifest = JSON.parse(fs.readFileSync('package.json', { encoding: 'utf8' })); delete manifest.release; fs.writeFileSync('package.json', JSON.stringify(manifest, null, 2) + '\n');"
+        if [ -f package.json ]; then
+          node -e "const fs = require('fs'); const manifest = JSON.parse(fs.readFileSync('package.json', { encoding: 'utf8' })); delete manifest.release; fs.writeFileSync('package.json', JSON.stringify(manifest, null, 2) + '\n');"
+        fi
       shell: bash
 
     - name: Install is-semantic-release-configured
