@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/semantic-release-action/next-release-version/compare/v2.0.3...v2.0.4) (2023-01-16)
+
+
+### Bug Fixes
+
+* grant workflow write permissions to contents ([3674996](https://github.com/semantic-release-action/next-release-version/commit/3674996059bf783c65bb6d5bba1758dc037f2ee4))
+
 ## [2.0.3](https://github.com/semantic-release-action/next-release-version/compare/v2.0.2...v2.0.3) (2023-01-16)
 
 
