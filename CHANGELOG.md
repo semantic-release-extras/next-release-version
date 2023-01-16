@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/semantic-release-action/next-release-version/compare/v2.0.0...v2.0.1) (2023-01-16)
+
+
+### Bug Fixes
+
+* move workflow under .github/workflows ([b49c6d2](https://github.com/semantic-release-action/next-release-version/commit/b49c6d297147cc9aa3434e916036e2d46b11eb5d))
+
 # [2.0.0](https://github.com/semantic-release-action/next-release-version/compare/v1.0.14...v2.0.0) (2023-01-16)
 
 
