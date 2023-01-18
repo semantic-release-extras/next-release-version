@@ -27,10 +27,10 @@ jobs:
   do-the-thing:
     name: Zhu Li, do the thing
     runs-on: ubuntu-latest
-    if: needs.get-next-version.outputs.new-release-published == 'true'
     needs:
       - get-next-version
 
+    if: needs.get-next-version.outputs.new-release-published == 'true'
     steps:
       - run: ./do-the-thing ${{ needs.get-next-version.outputs.new-release-version }}
 ```
