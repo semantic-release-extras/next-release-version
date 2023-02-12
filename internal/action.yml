@@ -32,7 +32,7 @@ runs:
     - run: |
         : configure git to ignore semantic-release manifest
         mkdir -p "$HOME/.config/git"
-        echo "/.next-release-action/" >> "$HOME/.config/git/ignore"
+        echo "/.semantic-release-action_next-release-version/" >> "$HOME/.config/git/ignore"
       shell: bash
 
     - run: |
