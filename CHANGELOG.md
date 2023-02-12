@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/semantic-release-action/next-release-version/compare/v3.0.0...v3.0.1) (2023-02-12)
+
+
+### Bug Fixes
+
+* correct syntax error in cp arguments ([4d18458](https://github.com/semantic-release-action/next-release-version/commit/4d18458be6d5320bbf4f9fec5b478b18f0352d10))
+
 # [3.0.0](https://github.com/semantic-release-action/next-release-version/compare/v2.0.6...v3.0.0) (2023-02-12)
 
 
