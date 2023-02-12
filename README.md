@@ -32,6 +32,7 @@ If you need to reference the outputs from multiple jobs, run this action in its 
 ```yaml
 jobs:
   get-next-version:
+    name: Get next release version
     runs-on: ubuntu-latest
     outputs:
       new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
@@ -43,10 +44,10 @@ jobs:
   do-the-thing:
     name: Zhu Li, do the thing
     runs-on: ubuntu-latest
+    if: needs.get-next-version.outputs.new-release-published == 'true'
     needs:
       - get-next-version
 
-    if: needs.get-next-version.outputs.new-release-published == 'true'
     steps:
       - run: ./do-the-thing ${{ needs.get-next-version.outputs.new-release-version }}
 ```
