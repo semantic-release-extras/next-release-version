@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/semantic-release-action/next-release-version/compare/v4.0.0...v4.0.1) (2023-02-12)
+
+
+### Bug Fixes
+
+* upgrade semantic-release-action/next-release-version to v4 ([88fae67](https://github.com/semantic-release-action/next-release-version/commit/88fae67638b96e694cc9e369427a1606963ed6e2))
+
 # [4.0.0](https://github.com/semantic-release-action/next-release-version/compare/v3.0.1...v4.0.0) (2023-02-12)
 
 
