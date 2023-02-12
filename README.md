@@ -11,36 +11,19 @@
 
 ## Use
 
-Invoke this action, then reference the step's output:
+In the first job, invoke this workflow:
 
 ```yaml
 ---
 jobs:
-  compile-release-binaries:
-    runs-on: ubuntu-latest
-    steps:
-      # Invoke the action
-      - id: get-next-version
-        uses: semantic-release-action/next-release-version@v3
-      # Reference the step's output
-      - if: steps.get-next-version.outputs.new-release-published == 'true'
-        run: ./compile-release-binaries ${{ needs.get-next-version.outputs.new-release-version }}
+  get-next-version:
+    uses: semantic-release-action/next-release-version/.github/workflows/next-release-version.yml@v2
 ```
 
-If you need to reference the outputs from multiple jobs, run this action in its own job:
+In the next job, reference the workflow's outputs:
 
 ```yaml
 jobs:
-  get-next-version:
-    name: Get next release version
-    runs-on: ubuntu-latest
-    outputs:
-      new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
-      new-release-version: ${{ steps.get-next-version.outputs.new-release-version }}
-    steps:
-      - id: get-next-version
-        uses: semantic-release-action/next-release-version@v3
-
   do-the-thing:
     name: Zhu Li, do the thing
     runs-on: ubuntu-latest

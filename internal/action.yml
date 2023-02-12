@@ -1,10 +1,6 @@
 ---
-name: next-release-version
+name: next-semantic-release-version
 description: Calculate your project's next semantic-release version number
-author: EricCrosson
-branding:
-  icon: package
-  color: pink
 
 # Use a composite action for access to github.action_path
 # (which is only supported in composite actions)
