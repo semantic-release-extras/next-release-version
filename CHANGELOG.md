@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/semantic-release-action/next-release-version/compare/v3.0.1...v4.0.0) (2023-02-12)
+
+
+### Reverts
+
+* Revert "refactor!: expose an action instead of a reusable workflow" ([4edde6d](https://github.com/semantic-release-action/next-release-version/commit/4edde6dc93308c4029bbc129ba73a4424fa78750))
+
+
+### BREAKING CHANGES
+
+* expose only a reusable workflow
+
 ## [3.0.1](https://github.com/semantic-release-action/next-release-version/compare/v3.0.0...v3.0.1) (2023-02-12)
 
 
