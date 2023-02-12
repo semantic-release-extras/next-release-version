@@ -1,3 +1,20 @@
+# [3.0.0](https://github.com/semantic-release-action/next-release-version/compare/v2.0.6...v3.0.0) (2023-02-12)
+
+
+* refactor!: expose an action instead of a reusable workflow ([ba19125](https://github.com/semantic-release-action/next-release-version/commit/ba19125172d6660534da9d1e5f45595e1fba6e46)), closes [#9](https://github.com/semantic-release-action/next-release-version/issues/9)
+
+
+### BREAKING CHANGES
+
+* expose an action instead of a reusable workflow
+
+To simplify invocation and permit use within a single job, this project
+must now be invoked as an action instead of a reusable workflow.
+
+The simplest way to use this action is now:
+
+```yaml
+
 ## [2.0.6](https://github.com/semantic-release-action/next-release-version/compare/v2.0.5...v2.0.6) (2023-02-12)
 
 
