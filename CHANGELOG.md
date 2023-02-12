@@ -1,3 +1,10 @@
+## [2.0.6](https://github.com/semantic-release-action/next-release-version/compare/v2.0.5...v2.0.6) (2023-02-12)
+
+
+### Bug Fixes
+
+* git ignore the correct directory ([564e174](https://github.com/semantic-release-action/next-release-version/commit/564e174a8b2d2a1919fcdc599f294f73e598258c))
+
 ## [2.0.5](https://github.com/semantic-release-action/next-release-version/compare/v2.0.4...v2.0.5) (2023-02-12)
 
 
