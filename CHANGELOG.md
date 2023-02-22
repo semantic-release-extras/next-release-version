@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/semantic-release-action/next-release-version/compare/v4.0.1...v4.0.2) (2023-02-22)
+
+
+### Bug Fixes
+
+* clarify step name ([608298d](https://github.com/semantic-release-action/next-release-version/commit/608298d9563d012bc4c489c8e9cc48eec18dbd5c))
+
 ## [4.0.1](https://github.com/semantic-release-action/next-release-version/compare/v4.0.0...v4.0.1) (2023-02-12)
 
 
