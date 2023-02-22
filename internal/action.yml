@@ -41,7 +41,7 @@ runs:
       shell: bash
 
     - run: |
-        : install semantic-release manifest
+        : install semantic-release package manifest
         cp "${{ github.action_path }}/package.json" "${{ github.action_path}}/package-lock.json" "${{ env.node_workdir }}/"
       shell: bash
 
