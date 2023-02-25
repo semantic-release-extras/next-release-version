@@ -73,9 +73,25 @@ runs:
     #
     # Therefore, a quick and drity workaround is to clear out the configuration
     # before invoking semantic-release.
-    - run: |
+    - env: 
+        YQ_VERSION: v4.31.1
+        YQ_BIN: yq_linux_amd64
+      run: |
+        if [ -f .releaserc.{json, yml, yaml} ]; then
+          wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY} -O /usr/bin/yq &&\
+             chmod +x /usr/bin/yq
+        fi
         : remove existing semantic-release configuration
-        rm -f .releaserc{,.yaml,.yml,.json,.js,.cjs} .release.config.{js,cjs}
+        if [ -f .releaserc.json ]; then
+          yq -p '.branches | {"branches": .}' .releaserc.json -i
+        fi
+        if [ -f .releaserc.yml ]; then
+          yq '.branches | {"branches": .}' .releaserc.yml -i
+        fi
+        if [ -f .releaserc.yaml ]; then
+          yq '.branches | {"branches": .}' .releaserc.yaml  -i
+        fi
+        rm -f .releaserc{,.js,.cjs} .release.config.{js,cjs}
         if [ -f package.json ]; then
           node -e "const fs = require('fs'); const manifest = JSON.parse(fs.readFileSync('package.json', { encoding: 'utf8' })); delete manifest.release; fs.writeFileSync('package.json', JSON.stringify(manifest, null, 2) + '\n');"
         fi
