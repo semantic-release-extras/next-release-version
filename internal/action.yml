@@ -64,37 +64,8 @@ runs:
       working-directory: ${{ env.node_workdir }}
       shell: bash
 
-    # Clear out any existing semantic-release configuration.
-    #
-    # This step is necessary in my projects that use a .releaserc.json file
-    # with a non-stock semantic-release plugin, because semantic-release throws
-    # an error when the plugin is referenced in the configuration but not
-    # present in the node_modules directory.
-    #
-    # Therefore, a quick and drity workaround is to clear out the configuration
-    # before invoking semantic-release.
-    - run: |
-        : remove existing semantic-release configuration
-        rm -f .releaserc{,.yaml,.yml,.json,.js,.cjs} .release.config.{js,cjs}
-        if [ -f package.json ]; then
-          node -e "const fs = require('fs'); const manifest = JSON.parse(fs.readFileSync('package.json', { encoding: 'utf8' })); delete manifest.release; fs.writeFileSync('package.json', JSON.stringify(manifest, null, 2) + '\n');"
-        fi
-      shell: bash
-
-    - name: Install is-semantic-release-configured
-      uses: EricCrosson/install-github-release-binary@v2
-      with:
-        targets: EricCrosson/is-semantic-release-configured@v1
-
-    - run: |
-        : Check for conflicting semantic-release configuration
-        if is-semantic-release-configured; then
-          echo "::warning title=Invalid precondition::Expected semantic-release to not be configured at this point in this action's execution"
-        fi
-      shell: bash
-
     - id: get-next-version
       run: |
         : calculate next semantic-release version
-        ${semantic_release} --dry-run --verify-conditions semantic-release-export-data --generate-notes semantic-release-export-data
+        ${semantic_release} --plugins semantic-release-export-data --dry-run --verify-conditions semantic-release-export-data --generate-notes semantic-release-export-data
       shell: bash
