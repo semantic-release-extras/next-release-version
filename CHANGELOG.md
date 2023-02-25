@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/semantic-release-action/next-release-version/compare/v4.0.2...v4.0.3) (2023-02-25)
+
+
+### Bug Fixes
+
+* use host semantic-release configuration ([ebbae10](https://github.com/semantic-release-action/next-release-version/commit/ebbae1096f7f4fa8ef46e24f5c8108fa565b3604)), closes [#11](https://github.com/semantic-release-action/next-release-version/issues/11)
+
 ## [4.0.2](https://github.com/semantic-release-action/next-release-version/compare/v4.0.1...v4.0.2) (2023-02-22)
 
 
