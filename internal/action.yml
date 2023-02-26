@@ -57,6 +57,14 @@ runs:
       working-directory: ${{ env.node_workdir }}
       shell: bash
 
+    # Note: do not override the analyze-commits plugin because this affects how
+    # semantic-release calculates the next version number!
+    #
+    # If a user's semantic-release config specifies a custom plugin for
+    # analyze-commits, it will not be installed by this plugin and fail.
+    #
+    # If you're the lucky user who triggers this edge-case, please open an
+    # issue!
     - id: get-next-version
       run: |
         : calculate next semantic-release version
@@ -64,5 +72,10 @@ runs:
           --dry-run \
           --plugins semantic-release-export-data \
           --verify-conditions semantic-release-export-data \
-          --generate-notes semantic-release-export-data
+          --verify-release '' \
+          --generate-notes semantic-release-export-data \
+          --prepare '' \
+          --publish '' \
+          --success '' \
+          --fail ''
       shell: bash
