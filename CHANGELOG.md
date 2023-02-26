@@ -1,3 +1,10 @@
+## [4.0.5](https://github.com/semantic-release-action/next-release-version/compare/v4.0.4...v4.0.5) (2023-02-26)
+
+
+### Bug Fixes
+
+* override plugins for each release step ([538bd6f](https://github.com/semantic-release-action/next-release-version/commit/538bd6fa821c9cec18a7cc55002454e64743e543)), closes [#11](https://github.com/semantic-release-action/next-release-version/issues/11)
+
 ## [4.0.4](https://github.com/semantic-release-action/next-release-version/compare/v4.0.3...v4.0.4) (2023-02-26)
 
 
