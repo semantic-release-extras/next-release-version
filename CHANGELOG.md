@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/semantic-release-action/next-release-version/compare/v4.0.3...v4.0.4) (2023-02-26)
+
+
+### Bug Fixes
+
+* use runner temp directory instead of github workspace ([ab95086](https://github.com/semantic-release-action/next-release-version/commit/ab95086fc6331ca81872c7a52cd4e36cce5497dd))
+
 ## [4.0.3](https://github.com/semantic-release-action/next-release-version/compare/v4.0.2...v4.0.3) (2023-02-25)
 
 
