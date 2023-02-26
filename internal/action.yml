@@ -24,15 +24,7 @@ runs:
 
     - run: |
         : configure working directory
-        echo "node_workdir=$GITHUB_WORKSPACE/.semantic-release-action_next-release-version/" >> "$GITHUB_ENV"
-        echo "semantic_release=$GITHUB_WORKSPACE/.semantic-release-action_next-release-version/node_modules/.bin/semantic-release" >> "$GITHUB_ENV"
-        mkdir -p "$GITHUB_WORKSPACE/.semantic-release-action_next-release-version/"
-      shell: bash
-
-    - run: |
-        : configure git to ignore semantic-release manifest
-        mkdir -p "$HOME/.config/git"
-        echo "/.semantic-release-action_next-release-version/" >> "$HOME/.config/git/ignore"
+        echo "node_workdir=${{ runner.temp }}/.semantic-release-action_next-release-version/" >> "$GITHUB_ENV"
       shell: bash
 
     - run: |
@@ -42,7 +34,8 @@ runs:
 
     - run: |
         : install semantic-release package manifest
-        cp "${{ github.action_path }}/package.json" "${{ github.action_path }}/package-lock.json" "${{ env.node_workdir }}/"
+        mkdir -p "$node_workdir"
+        cp "${{ github.action_path }}/package.json" "${{ github.action_path }}/package-lock.json" "$node_workdir/"
       shell: bash
 
     - name: Configure Node.js
@@ -54,8 +47,8 @@ runs:
       uses: actions/cache@v3
       id: cache-node-modules
       with:
-        path: .semantic-release-action_next-release-version/node_modules
-        key: semantic-release-action/next-release-version-${{ runner.os }}-node-${{ hashFiles('.semantic-release-action_next-release-version/package-lock.json') }}
+        path: ${{ runner.temp }}/.semantic-release-action_next-release-version/node_modules
+        key: semantic-release-action/next-release-version-${{ runner.os }}-node-${{ hashFiles('${{ github.action_path }}/package-lock.json') }}
 
     - if: steps.cache-node-modules.outputs.cache-hit != 'true'
       run: |
@@ -67,7 +60,7 @@ runs:
     - id: get-next-version
       run: |
         : calculate next semantic-release version
-        ${semantic_release} \
+        $node_workdir/node_modules/.bin/semantic-release \
           --dry-run \
           --plugins semantic-release-export-data \
           --verify-conditions semantic-release-export-data \
