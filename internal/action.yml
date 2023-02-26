@@ -63,8 +63,8 @@ runs:
     # If a user's semantic-release config specifies a custom plugin for
     # analyze-commits, it will not be installed by this plugin and fail.
     #
-    # If you're the lucky user who triggers this edge-case, please open an
-    # issue!
+    # If you're the lucky user who triggers this edge-case, please comment on
+    # https://github.com/semantic-release-action/next-release-version/issues/13
     - id: get-next-version
       run: |
         : calculate next semantic-release version
