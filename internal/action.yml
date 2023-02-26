@@ -67,5 +67,9 @@ runs:
     - id: get-next-version
       run: |
         : calculate next semantic-release version
-        ${semantic_release} --plugins semantic-release-export-data --dry-run --verify-conditions semantic-release-export-data --generate-notes semantic-release-export-data
+        ${semantic_release} \
+          --dry-run \
+          --plugins semantic-release-export-data \
+          --verify-conditions semantic-release-export-data \
+          --generate-notes semantic-release-export-data
       shell: bash
