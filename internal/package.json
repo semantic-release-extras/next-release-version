@@ -2,7 +2,7 @@
   "name": "@semantic-release-action/next-release-version-internal",
   "private": true,
   "dependencies": {
-    "semantic-release": "21.0.5",
+    "semantic-release": "22.0.7",
     "semantic-release-export-data": "1.0.1"
   }
 }
