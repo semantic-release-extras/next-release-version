@@ -1,3 +1,10 @@
+## [4.0.9](https://github.com/semantic-release-action/next-release-version/compare/v4.0.8...v4.0.9) (2023-11-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v22 ([c264622](https://github.com/semantic-release-action/next-release-version/commit/c264622bb87bd3eb4781d17b535a37b8b6b12f9b))
+
 ## [4.0.8](https://github.com/semantic-release-action/next-release-version/compare/v4.0.7...v4.0.8) (2023-06-18)
 
 
