@@ -44,7 +44,7 @@ runs:
         node-version: lts/*
 
     - name: Cache action npm dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       id: cache-node-modules
       with:
         path: ${{ runner.temp }}/.semantic-release-action_next-release-version/node_modules
