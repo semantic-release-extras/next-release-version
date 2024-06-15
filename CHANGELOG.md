@@ -1,3 +1,10 @@
+## [4.0.14](https://github.com/semantic-release-action/next-release-version/compare/v4.0.13...v4.0.14) (2024-06-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release-export-data to v1.1.0 ([3a17714](https://github.com/semantic-release-action/next-release-version/commit/3a177147616cb4b8a53ff0863527de279309ea45))
+
 ## [4.0.13](https://github.com/semantic-release-action/next-release-version/compare/v4.0.12...v4.0.13) (2024-06-01)
 
 
